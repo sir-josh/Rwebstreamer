@@ -23,7 +23,7 @@ class GoogleAuth extends Component {
 
     onAuthChange = (isSignedInFlag) => {
         if (isSignedInFlag) {
-            this.props.signIn();   //Action creator that tells the reducer that the user has signed in -- True
+            this.props.signIn(this.auth.currentUser.get().getId());   //Action creator with userId payload arg that tells the reducer that the user has signed in -- True
         }else {
             this.props.signOut();  //Action creator that tells the reducer that the user has signed out  -- False
         }
@@ -64,7 +64,7 @@ class GoogleAuth extends Component {
 }
 
 const mapStateToProps = state => {
-    return { isSignedIn : state.auth.isSignedIn }
+    return { isSignedIn : state.auth.isSignedIn , userId: state.auth.userId }
 }
 
 export default connect( mapStateToProps, { signIn, signOut })(GoogleAuth);

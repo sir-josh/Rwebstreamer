@@ -26,9 +26,9 @@ class GoogleAuth extends Component {
 
     onAuthChange = (isSignedInFlag) => {
         if (isSignedInFlag) {
-            this.props.signIn();
+            this.props.signIn();   //Tell the reducer that the user has signed in -- True
         }else {
-            this.props.signOut();
+            this.props.signOut();  //Tell the reducer that the user has signed out  -- False
         }
     }
 

@@ -6,16 +6,21 @@ class GoogleAuth extends Component {
     }
 
     componentDidMount(){
-        window.gapi.load('auth2', ()=>{
-            window.gapi.auth2.init({
-                client_id: process.env.REACT_APP_GAPI_KEY,
-                scope: 'email'
-            }).then(()=> {
-                this.auth = window.gapi.auth2.getAuthInstance();
-                this.setState({ isSignedIn: this.auth.isSignedIn.get() });
-                this.auth.isSignedIn.listen(this.onAuthChange);
+        try {
+            console.log(window.gapi);
+            window.gapi.load('auth2', ()=>{
+                window.gapi.auth2.init({
+                    client_id: process.env.REACT_APP_GAPI_KEY,
+                    scope: 'email'
+                }).then(()=> {
+                    this.auth = window.gapi.auth2.getAuthInstance();
+                    this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+                    this.auth.isSignedIn.listen(this.onAuthChange);
+                });
             });
-        });
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
     onAuthChange = () => {
@@ -41,7 +46,7 @@ class GoogleAuth extends Component {
                 </button>);
         } else {
             return (
-                <button onClick={this.onSignIn} className='ui red small google button'>
+                <button onClick={this.onSignIn} className='ui red small google button g-signin2' data-onsuccess="onSignIn">
                     <i className='google icon' />
                     Sign in with Google
                 </button>

@@ -14,6 +14,9 @@ import {
             return { ...state, [action.payload.id]: action.payload }
         case EDIT_STREAM:
             return { ...state, [action.payload.id]: action.payload }
+        case DELETE_STREAM:
+            const { [action.payload]: deletedStream, ...newState } = state;
+            return newState;
         default:
             return state;
     }

@@ -34,7 +34,7 @@ class StreamList extends Component {
       return (
         <div className='item' key={stream.id} style={{ padding: "12px 0"}}>
           {this.showButtonIfUser(stream)}
-          <i className='large middle aligned icon camera' />
+          <i className='large middle aligned icon video' />
           <div className='content'>
             <b>{stream.title}</b>
             <div className='description' style={{ marginTop: "5px"}}>{stream.description}</div>

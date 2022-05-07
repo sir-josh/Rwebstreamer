@@ -12,7 +12,7 @@ class StreamList extends Component {
     if (stream.userId === this.props.currentUserId) {
       return (
         <div className='right floated content'>
-          <button className='tiny ui button black'>Edit</button>
+          <Link to={`/streams/edit/${stream.id}`} className='tiny ui button black'>Edit</Link>
           <button className='tiny ui button'>Delete</button>
         </div>
       );
@@ -47,9 +47,12 @@ class StreamList extends Component {
   render() {
     return (
       <div>
-        <h2>Streams</h2>
+        <div style={{ marginBottom: "30px"}}>
+          {this.showCreateButton()}
+          <h2>Streams</h2>
+        </div>  
+
         <div className='ui celled list'>{ this.displayStreamList() }</div>
-        {this.showCreateButton()}
       </div>
     );
   }

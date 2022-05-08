@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Modal from '../Modal';
 
 function StreamDelete() {
   const actions = (
-    <div>
+    <Fragment>
       <button className='ui button black'>Delete</button>
       <button className='ui cancel button'>Cancel</button>
-    </div>
+    </Fragment>
   );
 
   return (

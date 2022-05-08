@@ -1,8 +1,12 @@
 import React from 'react';
+import Modal from '../Modal';
 
 function StreamDelete() {
   return (
-    <div>StreamDelete</div>
+    <div>
+      StreamDelete
+      <Modal />
+    </div>
   )
 }
 

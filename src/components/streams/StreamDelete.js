@@ -18,12 +18,20 @@ class StreamDelete extends Component {
     );
   }
 
+  showModalContent(){
+    if(!this.props.stream){
+      return 'Are sure you want to delete this stream?'
+    }
+
+    return <div>Are sure you want to delete this stream with title: <b>{this.props.stream.title}</b></div>
+  }
+
   render() {
     return (
       <div>
         <Modal 
           title="Delete Stream"
-          content="Are sure you want to delete this stream?"
+          content={this.showModalContent()}
           actions={this.showActionButtons()}
           onDismiss ={() => history.push('/')}
         />
@@ -32,4 +40,8 @@ class StreamDelete extends Component {
   }
 }
 
-export default connect(null, { fetchStream })(StreamDelete);
+const mapStateToProps = (state, ownProps) => {
+  return { stream: state.streams[ownProps.match.params.id] }
+}
+
+export default connect( mapStateToProps, { fetchStream })(StreamDelete);

@@ -36,7 +36,9 @@ class StreamList extends Component {
           {this.showButtonIfUser(stream)}
           <i className='large middle aligned icon video' />
           <div className='content'>
-            <b>{stream.title}</b>
+            <Link to={`/streams/${stream.id}`}>
+              <b className='ui black header'>{stream.title}</b>
+            </Link>
             <div className='description' style={{ marginTop: "5px"}}>{stream.description}</div>
           </div>
         </div>
